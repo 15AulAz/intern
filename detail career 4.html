@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Manager - GAGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0c4c91;
+            --primary-red: #a30015;
+            --accent-yellow: #ffd700;
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center; /* Center content in header */
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center; /* Center nav items */
+            align-items: center;
+            width: 100%; /* Allow nav to fill header */
+        }
+
+        .logo img {
+            height: 40px;
+            max-width: 100%;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column; /* Stack links vertically */
+            position: absolute; /* Position them below the header */
+            background-color: var(--primary-blue);
+            top: 100%; /* Align below the header */
+            left: 0; /* Align to the left */
+            width: 100%; /* Full width */
+            z-index: 999; /* Ensure it is above other content */
+            padding: 0; /* Reset padding */
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 600;
+            text-align: left; /* Align text to the left */
+        }
+
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 4rem 0 2rem;
+            margin-top: 60px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin: 0 auto 1rem;
+        }
+
+        .Deskripsi Pekerjaan,
+        .Kualifikasi,
+        .Pengumuman,
+        .Profil Perusahaan{
+            padding: 2rem 0;
+            margin: 0 10px;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        .apply-now {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0 40px;
+            transition: background-color 0.3s;
+        }
+
+        .apply-now:hover {
+            background-color: var(--accent-yellow);
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex; /* Show nav links in a row */
+                flex-direction: row; /* Horizontal alignment */
+                justify-content: flex-end; /* Align links to the right */
+            }
+
+            .nav-links a {
+                margin-left: 20px; /* Space between links */
+            }
+
+            .menu-toggle {
+                display: none; /* Hide menu toggle on larger screens */
+            }
+
+            .hero {
+                padding: 6rem 0;
+                margin-top: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .nav-links.active {
+                display: flex; /* Ensure it shows correctly */
+                position: static; /* Reset positioning for desktop */
+                background-color: transparent; /* Reset background color */
+            }
+        }
+
+        @media (max-width: 767px) {
+            nav {
+                justify-content: space-between; /* Logo left, toggle right on mobile */
+                padding: 0 10px; /* Add some padding */
+            }
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when active */
+                flex-direction: column; /* Stack links vertically */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="gaga.png" alt="GAGA Logo"/>
+            </a>
+            <div class="nav-links">
+                <a href="About.html">About Us</a>
+                <a href="Our Product.html">Our Products</a>
+                <a href="Partnership.html">Partnership</a>
+                <a href="Career.html">Career</a>
+            </div>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Production Manager (FMCG)</h1>
+            <p>Ciawi, Bogor, West Java | Full Time</p>
+            <p>Production, Planning & Scheduling (Manufacturing, Transportation & Logistics)</p>
+        </div>
+    </section>
+
+    <section class="job-details">
+        <h2>Job Description</h2>
+        <ol>
+            <li>In charge of evaluating the production process by controlling production parameters and raw materials in accordance with quality standards and production targets.</li>
+            <li>Organize and supervise the implementation of the production process.</li>
+            <li>Together with PPIC, arrange the production schedule and ensure that the product complies with the specified specifications and quality standards.</li>
+            <li>Carry out Continuous Improvement in the production line to achieve effective and efficient production.</li>
+            <li>Manage the team and evaluate performance periodically.</li>
+            <li>Understand and implement the principles of quality and work safety.</li>
+            <li>Ensure the implementation of the Quality System, GMP, Legal Requirements, and safety according to predetermined standards.</li>
+            <li>Carry out production activities in accordance with applicable Standard Operational Procedures and Work Instructions.</li>
+            <li>Create daily reports and dashboard reporting.</li>
+        </ol>
+    </section>
+
+    <section class="qualification">
+        <h2>Requirements</h2>
+        <ol>
+            <li>Minimum education: Bachelor degree in Engineering (Food/Mechanical/Electrical Technology) with GPA 3.00.</li>
+            <li>Minimum of 5 years of work experience as a Production Manager in FMCG/Food factory (noodles and seasoning).</li>
+            <li>Strong leadership skills to motivate and manage the production team.</li>
+            <li>Good analytical, problem-solving, communication, and interpersonal skills.</li>
+            <li>Able to operate Microsoft Office (Excel Intermediate) and SAP.</li>
+            <li>High work motivation and attention to detail.</li>
+            <li>Willing to be placed at the Ciawi Factory, Bogor.</li>
+        </ol>
+    </section>
+
+    <section class="announcement">
+        <h2>Notice</h2>
+        <ol>
+            <li>PT Jakarana Tama never charges any fees in the recruitment process.</li>
+            <li>PT Jakarana Tama has never collaborated with any travel agent/travel agency in the recruitment process.</li>
+            <li>If you are asked to pay a sum of money in the form of payment for plane tickets, hotel, or other accommodation, please ignore it.</li>
+            <li>Do not give your personal or financial data to anyone.</li>
+            <li>If you need further clarification, you can contact PT Jakarana Tama directly.</li>
+        </ol>
+    </section>
+
+    <section class="company-info">
+        <h2>Company Profile</h2>
+        <p>PT Jakarana Tama was established on June 20, 1980 based on Notarial Deed No. 107 of Kusmulayanto Ongko, SH as a regional distribution company in Medan, North Sumatra.</p>
+        <p>The main business of the company is to produce instant noodles, canned products, ready-to-eat sausages, and seasoning. Realizing the importance of business and product diversification, the company has invested in the 'GaGa' brand in our portfolio. The company also owns several other brands, such as 100, 1000, Mie Gepeng, Mie Telor A1, Otak-otak, and Sosis Loncat.</p>
+        <p>These brands cater to several different market segments and consumers. In line with the increasing number of product varieties, the company has expanded its distribution across all major cities in Indonesia.</p>
+        <p>Today, the company has equipped itself with international-standard product innovations, adequate and advanced production technology, and highly qualified experts to support the overall objectives of the company in pursuing its corporate mission.</p>
+        <p>The company owns one of Indonesia's most popular instant noodle brands, GaGa, which continually gains market share in an immensely competitive environment.</p>
+        <p>CV can be sent via email to <a href="mailto:recruitment@jakaranatama.co.id">recruitment@jakaranatama.co.id</a>.</p>
+    </section>
+
+    <a href="mailto:recruitment@jakaranatama.co.id" class="apply-now">Apply Now</a>
+
+    <footer>
+        <p>&copy; 2024 GAGA. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Career - GAGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0c4c91;
+            --primary-red: #a30015;
+            --accent-yellow: #ffd700;
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: var(--bg-light);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Set max width for content */
+            padding: 0 10px; /* Reduce side padding */
+            box-sizing: border-box;
+            margin: 0 auto; /* Center container */
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 0; /* Reduce header padding */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease; /* Add transition for smooth effect */
+        }
+
+        nav {
+            display: flex; /* Use flexbox to layout items */
+            justify-content: center; /* Center navigation items */
+            align-items: center; /* Center vertically */
+            padding: 0; /* Remove padding to maintain centering */
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space between logo and toggle button */
+            width: 100%;
+        }
+
+        .logo {
+            margin: 0; /* Remove margin */
+        }
+
+        .logo img {
+            height: 40px; /* Logo height */
+            max-width: 100%; /* Make logo responsive */
+        }
+
+        .nav-links {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--primary-blue);
+            padding: 10px 0;
+            z-index: 999; /* Show above other content */
+        }
+
+        .nav-links.active {
+            display: flex; /* Show the menu when active */
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 10px; /* Adjust menu toggle position */
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 4rem 0 2rem;
+            margin-top: 60px; /* Space for fixed header */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin: 0 auto 2rem;
+        }
+
+        .job-listings {
+            padding: 2rem 0;
+            margin: 0 10px; /* Reduce side margin */
+        }
+
+        .job-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid var(--primary-red); /* Border around job cards */
+            box-sizing: border-box; /* Ensure padding and border included in size */
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 8px; /* Rounded corners for title */
+        }
+
+        .job-details {
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .learn-more {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+            margin: 1rem;
+        }
+
+        .learn-more:hover {
+            background-color: var(--accent-yellow);
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 0; /* Reduce footer padding */
+            font-size: 0.8rem;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                width: auto;
+                position: static;
+                background-color: transparent;
+                padding: 0;
+            }
+
+            .nav-links a {
+                margin-left: 20px;
+                padding: 0;
+            }
+
+            .menu-toggle {
+                display: none; /* Hide toggle on larger screens */
+            }
+
+            .hero {
+                padding: 6rem 0;
+                margin-top: 0; /* Reset margin for hero */
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-wrapper {
+                justify-content: center; /* Center items on larger screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="gaga.png" alt="GAGA Logo" />
+                </a>
+                <div class="nav-links">
+                    <a href="About.html">About Us</a>
+                    <a href="Our Product.html">Our Products</a>
+                    <a href="Partnership.html">Partnership</a>
+                    <a href="Career.html">Career</a>
+                </div>
+                <button class="menu-toggle">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>WORK WITH US</h1>
+                <p>Join our team and be part of something extraordinary</p>
+            </div>
+        </section>
+
+        <section class="job-listings">
+            <div class="container">
+                <div class="job-card">
+                    <div class="job-title">Sales Supervisor (FMCG)</div>
+                    <div class="job-details">
+                        - Full Time<br>
+                        - Minimum Education D3 All Majors<br>
+                        - Placement: South Jakarta
+                    </div>
+                    <a href="detail career 1.html" class="learn-more">Learn More</a>
+                </div>
+                <div class="job-card">
+                    <div class="job-title">Brand Activation Supervisor</div>
+                    <div class="job-details">
+                        - Full Time<br>
+                        - Minimum Bachelor's Degree In Any Major From A Leading University<br>
+                        - Placement: South Jakarta
+                    </div>
+                    <a href="detail career 2.html" class="learn-more">Learn More</a>
+                </div>
+                <div class="job-card">
+                    <div class="job-title">Business Process Improvement Manager</div>
+                    <div class="job-details">
+                        - Full Time<br>
+                        - Minimum Bachelor Degree Preferably From Reputable University<br>
+                        - Placement: South Jakarta
+                    </div>
+                    <a href="detail career 3.html" class="learn-more">Learn More</a>
+                </div>
+                <div class="job-card">
+                    <div class="job-title">Production Manager (FMCG)</div>
+                    <div class="job-details">
+                        - Full Time<br>
+                        - Minimum Education Bachelor Degree of Engineering (Food/Mechanical/Electrical Technology) With GPA 3.00<br>
+                        -  Placement: Ciawi, Bogor
+                    </div>
+                    <a href="detail career 4.html" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GAGA. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle the active class
+        });
+
+        // Scroll header functionality
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)'; // Hide header on scroll down
+            } else {
+                header.style.transform = 'translateY(0)'; // Show header on scroll up
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For mobile or negative scrolling
+        });
+    </script>
+</body>
+</html>

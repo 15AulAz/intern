@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <title>GAGA - Taste of Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0c4c91;
+            --primary-red: #a30015;
+            --accent-yellow: #ffd700;
+            --text-color: #333;
+            --bg-image: url('background-image.jpg'); /* Ganti dengan path gambar latar belakang */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 10px; /* Reduce header padding */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease; /* Add transition for smooth effect */
+        }
+
+        nav {
+            display: flex; /* Use flexbox to layout items */
+            justify-content: center; /* Center all items in the header for desktop */
+            align-items: center; /* Center vertically */
+            padding: 0; /* Remove padding to maintain centering */
+        }
+    
+        .nav-wrapper {
+            display: flex; 
+            justify-content: space-between; /* Keep logo on left and toggle on right */
+            align-items: center; /* Center vertically */
+            width: 100%;
+            max-width: 1200px; /* Match container max width */
+            margin: 0 auto; /* Center the nav wrapper */
+            padding: 0 10px; /* Add padding to the sides */
+
+        .logo {
+            margin-right: auto; /* Menggeser logo ke kiri */
+        }
+
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px; /* Margin yang disesuaikan untuk jarak */
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px; /* Ruang untuk header tetap */
+        }
+
+        .hero img {
+            max-width: 100%; /* Memastikan gambar sesuai dengan wadah */
+            height: auto; /* Mempertahankan rasio aspek */
+            max-height: 400px; /* Menetapkan tinggi maksimum untuk gambar hero */
+            margin-top: 1rem; /* Menambahkan beberapa jarak di atas gambar */
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            max-width: 100%; /* Memastikan gambar sesuai dalam kartu */
+            height: auto; /* Mempertahankan rasio aspek */
+            max-height: 200px; /* Menetapkan tinggi maksimum */
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-red);
+        }
+        .map iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px; /* Mengurangi padding untuk membuatnya lebih kecil */
+            font-size: 14px; /* Mengurangi ukuran font untuk teks yang lebih kecil */
+            text-align: center; /* Meratakan teks di tengah */
+        }
+
+        /* Tampilkan header saat scroll */
+        body.scrolled header {
+            top: 0; /* Header akan muncul di atas */
+            opacity: 1; /* Header menjadi terlihat */
+        }
+    
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;   
+                flex-direction: row;
+                width: auto;
+                position: static; /* Change to static for desktop */
+                background-color: transparent; /* No background color on desktop */
+                padding: 0; /* Remove padding */
+                justify-content: center; /* Center nav links for desktop */
+            }
+    
+            .nav-links a {
+                margin-left: 20px; /* Add space between nav links */
+                padding: 0; /* Remove padding for nav links */
+            }
+    
+            .menu-toggle {
+                display: none; /* Hide menu toggle on desktop */
+            }
+    
+            .hero {
+                padding: 6rem 0;
+                margin-top: 0;
+            }
+    
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+    
+            .section h2 {
+                font-size: 2.2rem;
+            }
+        }
+    
+        /* Media Query for Mobile */
+        @media (max-width: 767px) {
+    .nav-wrapper {
+        display: flex; /* Pastikan menggunakan flex */
+        justify-content: space-between; /* Logo di kiri, toggle di kanan */
+        align-items: center; /* Pusatkan secara vertikal */
+        width: 100%; /* Gunakan lebar penuh */
+        padding: 0 10px; /* Tambahkan padding jika diperlukan */
+    }
+    header {
+        padding: 0.5rem 10px; /* Mengurangi padding sisi untuk tampilan mobile */
+    }
+
+    .logo {
+        margin-right: auto; /* Pastikan logo berada di kiri */
+    }
+
+    .menu-toggle {
+        margin-left: auto; /* Pastikan toggle berada di kanan */
+    }
+
+    .nav-links {
+        display: none; /* Sembunyikan menu secara default */
+        flex-direction: column; /* Link ditumpuk di mobile */
+        width: 100%; /* Lebar penuh untuk dropdown */
+        background-color: var(--primary-blue); /* Warna latar belakang */
+        position: absolute; /* Posisi tetap untuk dropdown */
+        top: 100%; /* Pastikan muncul tepat di bawah navbar */
+        z-index: 999; /* Pastikan muncul di atas elemen lain */
+        padding: 10px 0; /* Tambahkan padding vertikal untuk menu */
+    }
+
+    .nav-links.active {
+        display: flex; /* Tampilkan menu saat aktif */
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="gaga.png" alt="GAGA Logo"/>
+            </a>
+            <button class="menu-toggle">☰</button>
+            <div class="nav-links">
+                <a href="About.html">About Us</a>
+                <a href="Our Product.html">Our Products</a>
+                <a href="Partnership.html">Partnership</a>
+                <a href="Career.html">Career</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>OUR PRODUCTS</h1>
+                <p>Discover the wide range of GAGA products that bring authentic Indonesian flavors to your table.</p>
+                <img id="hero-img" src="BANNER-OUR-PRODUCT.jpg" alt="GAGA Indonesia Mie" class="hero-img" />
+            </div>
+        </section>
+        
+        <section class="product-grid container">
+            <div class="product-card">
+                <img src="Product-GAGA-100-2.jpg" alt="GAGA 100 Extra Pedas">
+                <h3>GAGA 100 Extra Pedas</h3>
+                <p>The noodle made with the best quality wheat flour served with famous Indonesian herbs and spices, available in five different variants.</p>
+                <a href="product details extra pedas.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA-IMGO-2.jpg" alt="GAGA Indonesia Mie">
+                <h3>GAGA Indonesia Mie</h3>
+                <p>Instant Fried Noodles with a soft texture and a blend of sweet and savory flavors, complemented by chili sauce, soy sauce, and fried onions in hygienic packaging. Now available in one variant.</p>
+                <a href="product details mie goreng indonesia.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA-Sarden-2.jpg" alt="GAGA Sardines">
+                <h3>GAGA Sardines</h3>
+                <p>Made from high-quality fresh sardines with a delicious taste of tomato and chili sauce. Each serving is packed with nutrients, uses fresh ingredients without preservatives, and is conveniently packaged for immediate consumption.</p>
+                <a href="product details sardines.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA-GEPENG.jpg" alt="GAGA Gepeng">
+                <h3>GAGA Gepeng</h3>
+                <p>The noodle made with the best quality wheat flour served with famous Indonesian herbs and spices, available in four different variants.</p>
+                <a href="product details gepeng.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA-SOSTAK.jpg" alt="GAGA Sosis & Otak-Otak">
+                <h3>GAGA Sosis & Otak-Otak</h3>
+                <p>A tasty sausage made from fresh fish. Loncat Sausage comes in two flavors: chicken and beef, and is a ready-to-eat product.</p>
+                <a href="product details sausage.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA-GAMIE.jpg" alt="GAGA Mie Aussie">
+                <h3>GAGA Mie Aussie</h3>
+                <p>Special Instant Noodle with two different flavors, made from pure Australian wheat combined with traditional Indonesian spices for guaranteed quality.</p>
+                <a href="product details gamie aussie.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA-SAMBAL.jpg" alt="GAGA 100 Extra Pedas Saus Sambal">
+                <h3>GAGA 100 Extra Pedas Saus Sambal</h3>
+                <p>Special Instant Noodle made with pure Australian wheat combined with Indonesian traditional spices, available in two different flavors.</p>
+                <a href="product details sausage.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA (2).jpg" alt="GAGA Beef Ready to Eat">
+                <h3>GAGA Beef Ready to Eat</h3>
+                <p>Ready-to-eat product made from beef, rich in protein and iron, processed with sterilization and no preservatives, featuring famous Indonesian herbs and spices. Available in two different variants.</p>
+                <a href="product details beef ready to eat.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA-MIE-TELOR-A1.jpg" alt="GAGA Mie Telor A1">
+                <h3>GAGA Mie Telor A1</h3>
+                <p>Premium quality wheat noodles with a chewy texture, perfect for various types of preparations.</p>
+                <a href="product details mie telor.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA.jpg" alt="GAGA Bakmi">
+                <h3>GAGA Bakmi</h3>
+                <p>Premium quality wheat noodles with a chewy texture, suitable for a variety of dishes.</p>
+                <a href="product details bakmi.html" class="btn">Learn More</a>
+            </div>
+        
+            <div class="product-card">
+                <img src="Product-GAGA-BUBUR.jpg" alt="GAGA Bubur">
+                <h3>GAGA Bubur</h3>
+                <p>Ready-to-eat desserts available in two variants: Mix Bean Porridge and Black Glutinous Rice Porridge, rich in nutrients and antioxidants.</p>
+                <a href="product details bubur.html" class="btn">Learn More</a>
+            </div>
+        </section>
+        
+
+        <section class="contact"></section>
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>PT Jakarana Tama</h3>
+                        <p><strong>Head Office:</strong><br>
+                        Jl. Bintaro Raya No.15, RT.11/RW.10<br>
+                        Kebayoran Lama Selatan<br>
+                        Jakarta Selatan, Indonesia, 12240</p>
+                        <p><strong>Operating Hours:</strong> 08.00 - 16.00</p>
+                        <p><strong>Phone:</strong> (021) 7292728</p>
+                        <p><strong>Email:</strong> info@jakaranatama.co.id</p>
+                    </div>
+        
+                    <!-- Google Maps Embed -->
+                    <section id="map" class="map" style="margin-top: 0;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31512.989031594123!2d106.79420473387082!3d-6.240122489794188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5cfbcf40a65%3A0x20347669b4318d81!2sJl.%20Bintaro%20Raya%20No.15%2C%20RT.11%2FRW.10%2C%20Kebayoran%20Lama%20Selatan%2C%20Jakarta%20Selatan%2C%20DKI%20Jakarta%2012240!5e0!3m2!1sen!2sid!4v1690636225010!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GAGA. All Rights Reserved.</p>
+    </footer>
+
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle class for menu display
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.transform = 'translateY(-100%)'; // Hide header on scroll
+            } else {
+                header.style.transform = 'translateY(0)'; // Show header on top
+            }
+        });
+    </script>
+</body>
+</html>

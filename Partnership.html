@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Partnership - GAGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0c4c91;
+            --primary-red: #a30015;
+            --accent-yellow: #ffd700;
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+        }
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: var(--bg-light);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+    
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Set max width for content */
+            padding: 0 10px; /* Reduce side padding */
+            box-sizing: border-box;
+            margin: 0 auto; /* Center container */
+        }
+    
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 0; /* Reduce header padding */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease; /* Add transition for smooth effect */
+        }
+    
+        nav {
+            display: flex; /* Use flexbox to layout items */
+            justify-content: center; /* Center all items in the header for desktop */
+            align-items: center; /* Center vertically */
+            padding: 0; /* Remove padding to maintain centering */
+        }
+    
+        .nav-wrapper {
+            display: flex; 
+            justify-content: space-between; /* Keep logo on left and toggle on right */
+            align-items: center; /* Center vertically */
+            width: 100%;
+            max-width: 1200px; /* Match container max width */
+            margin: 0 auto; /* Center the nav wrapper */
+            padding: 0 10px; /* Add padding to the sides */
+        }
+    
+        .logo img {
+            height: 40px; /* Logo height */
+            max-width: 100%; /* Make logo responsive */
+        }
+    
+        .nav-links {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--primary-blue);
+            padding: 10px 0;
+            z-index: 999; /* Show above other content */
+        }
+    
+        .nav-links.active {
+            display: flex; /* Show the menu when active */
+        }
+    
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            font-weight: 600;
+        }
+    
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    
+        .hero {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 4rem 0 2rem;
+            margin-top: 60px;
+        }
+    
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+    
+        .hero p {
+            font-size: 1rem;
+            margin: 0 auto 2rem;
+        }
+    
+        .section {
+            padding: 3rem 0;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+    
+        .section h2 {
+            color: var(--primary-blue);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+    
+        .icon-list {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping of items */
+            justify-content: center; /* Center items */
+            gap: 20px; /* Space between items */
+            margin-top: 2rem; /* Space above the list */
+        }
+
+        .icon-list p {
+            background: var(--bg-light); /* Background color of items */
+            border-radius: 10px; /* Rounded corners */
+            padding: 15px; /* Inner space */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.3s ease; /* Transition for hover effect */
+            width: 150px; /* Fixed width for consistency */
+            text-align: center; /* Center text */
+        }
+
+        .icon-list p:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .icon-list span {
+            font-weight: 600; /* Bold text */
+            color: var(--primary-red); /* Color for title */
+            display: block; /* Block display for spacing */
+            margin-top: 10px; /* Space between icon and text */
+        }
+    
+
+        .map iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+    
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+    
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                width: auto;
+                position: static; /* Change to static for desktop */
+                background-color: transparent; /* No background color on desktop */
+                padding: 0; /* Remove padding */
+                justify-content: center; /* Center nav links for desktop */
+            }
+    
+            .nav-links a {
+                margin-left: 20px; /* Add space between nav links */
+                padding: 0; /* Remove padding for nav links */
+            }
+    
+            .menu-toggle {
+                display: none; /* Hide menu toggle on desktop */
+            }
+    
+            .hero {
+                padding: 6rem 0;
+                margin-top: 0;
+            }
+    
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+    
+            .section h2 {
+                font-size: 2.2rem;
+            }
+        }
+    
+        /* Media Query for Mobile */
+        @media (max-width: 767px) {
+    .nav-wrapper {
+        display: flex; /* Pastikan menggunakan flex */
+        justify-content: space-between; /* Logo di kiri, toggle di kanan */
+        align-items: center; /* Pusatkan secara vertikal */
+        width: 100%; /* Gunakan lebar penuh */
+        padding: 0 10px; /* Tambahkan padding jika diperlukan */
+    }
+
+    .logo {
+        margin-right: auto; /* Pastikan logo berada di kiri */
+    }
+
+    .menu-toggle {
+        margin-left: auto; /* Pastikan toggle berada di kanan */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Link ditumpuk di mobile */
+        width: 100%; /* Lebar penuh untuk dropdown */
+        left: 0; /* Mulai dari kiri */
+        background-color: var(--primary-blue); /* Warna latar belakang */
+        padding: 10px 0; /* Tambahkan padding vertikal untuk menu */
+        position: absolute; /* Posisi tetap untuk dropdown */
+        top: 100%; /* Pastikan muncul tepat di bawah navbar */
+        display: none; /* Sembunyikan menu secara default */
+        z-index: 999; /* Pastikan muncul di atas elemen lain */
+    }
+
+    .nav-links.active {
+        display: flex; /* Tampilkan menu saat aktif */
+    }
+}
+
+    </style>
+    
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="gaga.png" alt="GAGA Logo"/>
+            </a>
+            <button class="menu-toggle">☰</button>
+            <div class="nav-links">
+                <a href="About.html">About Us</a>
+                <a href="Our Product.html">Our Products</a>
+                <a href="Partnership.html">Partnership</a>
+                <a href="Career.html">Career</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Partnership Opportunities</h1>
+                <p>Explore opportunities to grow with GAGA and bring authentic Indonesian flavors to new markets.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Why Partner With Us?</h2>
+                <div class="icon-list">
+                    <p>✪ <span>Top Quality:</span><br> We only export the highest quality food products, produced under strict standards to ensure international customer satisfaction.</p>
+                    <p>✪ <span>Unique and Authentic:</span><br> Our products reflect the rich flavours and culinary traditions of Indonesia, offering something unique and different in the international market.</p>
+                    <p>✪ <span>Export Experience:</span><br> With broad experience in international trade, we understand the challenges and opportunities in exporting and are ready to support our partners every step of the way.</p>
+                    <p>✪ <span>Comprehensive Support:</span><br> We provide full support, from handling export documentation and meeting international standards to assisting with marketing in the destination country.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Partnership Opportunities</h2>
+                <div class="icon-list">
+                    <p>✪ <span>International Distributors:</span><br> Collaborate in distributing GAGA Food products to international markets.</p>
+                    <p>✪ <span>New Market Development:</span><br> Explore and expand the reach of our products to new countries.</p>
+                    <p>✪ <span>Exclusive Collaboration:</span><br> Become an exclusive partner in a specific region to ensure Gaga Food products are available worldwide.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>How to Join?</h2>
+                <p>We offer opportunities for distributors and agents who want to expand their portfolio with premium products from Indonesia.</p>
+                <p>We are excited to work with you to bring high-quality Gaga Food products to consumers around the globe.</p>
+                <p>If you are interested in becoming an export partner of Gaga Food, please contact us through the contact form or email us at <a href="mailto:export@jakaranatama.co.id">export@jakaranatama.co.id</a>.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-info">
+                    <h3>PT Jakarana Tama</h3>
+                    <p><strong>Head Office:</strong><br>
+                    Jl. Bintaro Raya No.15, RT.11/RW.10<br>
+                    Kebayoran Lama Selatan<br>
+                    Jakarta Selatan, Indonesia, 12240</p>
+                    <p><strong>Operating Hours:</strong> 08.00 - 16.00</p>
+                    <p><strong>Phone:</strong> (021) 7292728</p>
+                    <p><strong>Email:</strong> info@jakaranatama.co.id</p>
+                </div>
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31512.989031594123!2d106.79420473387082!3d-6.240122489794188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5cfbcf40a65%3A0x20347669b4318d81!2sJl.%20Bintaro%20Raya%20No.15%2C%20RT.11%2FRW.10%2C%20Kebayoran%20Lama%20Selatan%2C%20Jakarta%20Selatan%2C%20DKI%20Jakarta%2012240!5e0!3m2!1sen!2sid!4v1690636225010!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GAGA. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active'); // Toggle class for menu display
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.transform = 'translateY(-100%)'; // Hide header on scroll
+            } else {
+                header.style.transform = 'translateY(0)'; // Show header on top
+            }
+        });
+    </script>
+</body>
+</html>

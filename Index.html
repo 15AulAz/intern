@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>GAGA - Taste of Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+        --primary-blue: #0c4c91;
+        --primary-red: #a30015;
+        --accent-yellow: #ffd700;
+        --text-color: #333;
+        --bg-light: #f8f9fa;
+        }
+
+        body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-color);
+        line-height: 1.6;
+        background: var(--bg-light);
+        overflow-x: hidden;
+        }
+
+        .container {
+        width: 100%;
+        max-width: 1200px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        }
+
+        header {
+        background-color: var(--primary-blue);
+        color: white;
+        padding: 0.5rem 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+        }
+
+        nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        }
+
+        .nav-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        }
+
+        .logo {
+        margin: 0;
+        }
+
+        .logo img {
+        height: 40px;
+        max-width: 100%;
+        }
+
+        .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--primary-blue);
+        padding: 10px 0;
+        z-index: 999;
+        }
+
+        .nav-links.active {
+            display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-blue);        }
+
+        .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        font-weight: 600;
+        }
+
+        .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-left: 10px;
+            margin-right: 10px; 
+        }
+
+        .hero {
+        background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+        color: white;
+        text-align: center;
+        padding: 6rem 0 3rem;
+        margin-top: 60px;
+        }
+
+        .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        }
+
+        .hero-img {
+        max-width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .commitment, .find-us, .contact {
+        padding: 3rem 0;
+        }
+
+        .commitment h2, .find-us h2, .contact h2 {
+        color: var(--primary-blue);
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        }
+
+        .commitment p {
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        text-align: center;
+        }
+
+        .products {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        }
+
+        .product-logo {
+        width: 80px;
+        transition: transform 0.3s;
+        border-radius: 10px;
+        }
+
+        .product-logo:hover {
+        transform: scale(1.1);
+        }
+
+        .find-us-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 30px;
+        }
+
+        .find-us-section {
+        flex: 1;
+        min-width: 250px;
+        text-align: center;
+        }
+
+        .find-us-section h3 {
+        color: var(--primary-red);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        }
+
+        .icon-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        }
+
+        .icon-links img {
+        width: 40px;
+        transition: transform 0.3s;
+        }
+
+        .icon-links img:hover {
+        transform: scale(1.2);
+        }
+
+        .contact-container {
+        display: flex;
+        flex-wrap : wrap;
+        justify-content: space-between;
+        gap: 20px;
+        }
+
+        .contact-info, .map {
+        flex: 1;
+        min-width: 300px;
+        }
+
+        .contact-info {
+        background-color: var(--bg-light);
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+        color: var(--primary-red);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        }
+
+        .map iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+        background-color: var(--primary-blue);
+        color: white;
+        padding: 10px 0;
+        font-size: 0.8rem;
+        text-align: center;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        }
+
+        @media (min-width: 767px) {
+        .nav-links {
+            display: flex;
+            flex-direction: row;
+            position: static;
+            width: auto;
+            top: 100%;
+            left: 0;
+            background-color: var(--primary-blue);
+            padding: 10px 0;
+            z-index: 999;
+        }
+
+        .nav-links a {
+            padding: 0 15px;
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+        }
+
+        .nav-links.active {
+            display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-blue);        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;        }
+
+        .hero {
+            padding: 6rem 0;
+            margin-top: 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .nav-wrapper {
+            justify-content: center;
+        }
+        
+
+        @media (max-width: 767px) {
+            .hero {
+                padding: 4rem 0 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .commitment h2, .find-us h2, .contact h2 {
+                font-size: 1.8rem;
+            }
+
+            .product-logo {
+                width: 60px;
+            }
+
+            .contact-info, .map {
+                min-width: 100%;
+            }
+
+            .nav-wrapper {
+                display: flex;
+                justify-content: space-between; /* Bagi rata elemen kiri dan kanan */
+                align-items: center;
+                width: 100%;
+                padding: 0 15px;
+            }
+
+            .logo {
+                flex: 1;
+                max-width: 50%;
+
+            }
+            .nav-links {
+                order: 3;
+                display: none;
+                transition: all 0.3s ease-in-out;
+
+            }
+
+            .menu-toggle {
+                margin-left: 10px;
+                display: block;
+                visibility: visible;
+                opacity: 1;
+                z-index: 1000;
+                position: relative;
+                order: 2;
+                font-size: 20px; /* Atur ukuran menu toggle */
+                margin-right: 10px; 
+
+            }
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="gaga.png" alt="GAGA Logo" />
+                </a>
+                <div class="nav-links">
+                    <a href="About.html">About Us</a>
+                    <a href="Our Product.html">Our Products</a>
+                    <a href="Partnership.html">Partnership</a>
+                    <a href="Career.html">Career</a>
+                </div>
+                <button class="menu-toggle">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Taste the Essence of Indonesia</h1>
+                <p>Experience the rich flavors and authentic taste of Indonesian cuisine with GAGA's premium noodles.</p>
+                <img id="hero-img" src="Banner-IMGO-1908x810.jpg" alt="GAGA Indonesia Mie" class="hero-img" />
+            </div>
+        </section>
+
+        <section class="commitment">
+            <div class="container">
+                <h2>Our Commitment to Excellence</h2>
+                <p>"At GAGA, we are dedicated to crafting food that not only delights your taste buds but also adheres to the highest standards of halal certification and food safety. Your satisfaction and well-being are at the heart of everything we do."</p>
+                <div class="products">
+                    <img src="LOGO-01-150x150.png" alt="Product 1" class="product-logo" />
+                    <img src="LOGO-02-150x150.png" alt="Product 2" class="product-logo" />
+                    <img src="LOGO-03-150x150.png" alt="Product 3" class="product-logo" />
+                    <img src="LOGO-04-150x150.png" alt="Product 4" class="product-logo" />
+                    <img src="LOGO-05-150x150.png" alt="Product 5" class="product-logo" />
+                    <img src="LOGO-06-150x150.png" alt="Product 6" class="product-logo" />
+                    <img src="LOGO-07-150x150.png" alt="Product 7" class="product-logo" />
+                    <img src="LOGO-08-150x150.png" alt="Product 8" class="product-logo" />
+                    <img src="LOGO-09-150x150.png" alt="Product 9" class="product-logo" />
+                    <img src="LOGO-10-150x150.png" alt="Product 10" class="product-logo" />
+                </div>
+            </div>
+        </section>
+
+        <section class="find-us">
+            <div class="container">
+                <h2>Connect with GAGA</h2>
+                <div class="find-us-content">
+                    <div class="find-us-section">
+                        <h3>Shop Online</h3>
+                        <div class="icon-links">
+                            <img src="LOGO-ECOM-SINGLE-01.png" alt="E-commerce 1" />
+                            <img src="LOGO-ECOM-SINGLE-02.png" alt="E-commerce 2" />
+                            <img src="LOGO-ECOM-SINGLE-03.png" alt="E-commerce 3" />
+                            <img src="LOGO-ECOM-SINGLE-04.png" alt="E-commerce 4" />
+                            <img src="LOGO-ECOM-SINGLE-05.png" alt="E-commerce 5" />
+                            <img src="LOGO-ECOM-SINGLE-06.png" alt="E-commerce 6" />
+                        </div>
+                    </div>
+                    <div class="find-us-section">
+                        <h3>Follow Us</h3>
+                        <div class="icon-links">
+                            <img src="R.png" alt="Social Media 1" />
+                            <img src="tiktok.webp" alt="Social Media 2" />
+                            <img src="linkedIn_PNG.png" alt="Social Media 3" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>PT Jakarana Tama</h3>
+                        <p><strong>Head Office:</strong><br>
+                        Jl. Bintaro Raya No.15, RT.11/RW.10<br>
+                        Kebayoran Lama Selatan<br>
+                        Jakarta Selatan, Indonesia, 12240</p>
+                        <p><strong>Operating Hours:</strong> 08.00 - 16.00</p>
+                        <p><strong>Phone:</strong> (021) 7292728</p>
+                        <p><strong>Email:</strong> info@jakaranatama.co.id</p>
+                    </div>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31512.989031594123!2d106.79420473387082!3d-6.240122489794188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5cfbcf40a65%3A0x20347669b4318d81!2sJl.%20Bintaro%20Raya%20No.15%2C%20RT.11%2FRW.10%2C%20Kebayoran%20Lama%20Selatan%2C%20Jakarta%20Selatan%2C%20DKI%20Jakarta%2012240!5e0!3m2!1sen!2sid!4v1690636225010!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GAGA. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
+        // Hero image rotation
+        const heroImages = [
+            'Banner-IMGO-1908x810.jpg',
+            'Banner-SARDEN-1908x810.jpg',
+            'Banner-HOTS-1908x810.jpg',
+            'BANNER-III-all-gaga.jpg'
+        ];
+        let currentImageIndex = 0;
+
+        function changeHeroImage() {
+            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+            const heroImg = document.getElementById('hero-img');
+            heroImg.style.opacity = '0';
+            setTimeout(() => {
+                heroImg.src = heroImages[currentImageIndex];
+                heroImg.style.opacity = '1';
+            }, 500);
+        }
+
+        setInterval(changeHeroImage, 5000);
+
+        // Ensure proper display of nav links on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767) {
+                navLinks.style.display = 'flex';
+                navLinks.classList.remove('active');
+
+            } else {
+                navLinks.style.display = navLinks.classList.contains('active') ? 'flex' : 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Activation Supervisor - GAGA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0c4c91;
+            --primary-red: #a30015;
+            --accent-yellow: #ffd700;
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 20px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            display: flex;
+            justify-content: center; /* Center content in header */
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center; /* Center nav items */
+            align-items: center;
+            width: 100%; /* Allow nav to fill header */
+        }
+
+        .logo img {
+            height: 40px;
+            max-width: 100%;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column; /* Stack links vertically */
+            position: absolute; /* Position them below the header */
+            background-color: var(--primary-blue);
+            top: 100%; /* Align below the header */
+            left: 0; /* Align to the left */
+            width: 100%; /* Full width */
+            z-index: 999; /* Ensure it is above other content */
+            padding: 0; /* Reset padding */
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: 600;
+            text-align: left; /* Align text to the left */
+        }
+
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 4rem 0 2rem;
+            margin-top: 60px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin: 0 auto 1rem;
+        }
+
+        .Deskripsi Pekerjaan,
+        .Kualifikasi,
+        .Pengumuman,
+        .Profil Perusahaan{
+            padding: 2rem 0;
+            margin: 0 10px;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+
+        .apply-now {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0 40px;
+            transition: background-color 0.3s;
+        }
+
+        .apply-now:hover {
+            background-color: var(--accent-yellow);
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex; /* Show nav links in a row */
+                flex-direction: row; /* Horizontal alignment */
+                justify-content: flex-end; /* Align links to the right */
+            }
+
+            .nav-links a {
+                margin-left: 20px; /* Space between links */
+            }
+
+            .menu-toggle {
+                display: none; /* Hide menu toggle on larger screens */
+            }
+
+            .hero {
+                padding: 6rem 0;
+                margin-top: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .nav-links.active {
+                display: flex; /* Ensure it shows correctly */
+                position: static; /* Reset positioning for desktop */
+                background-color: transparent; /* Reset background color */
+            }
+        }
+
+        @media (max-width: 767px) {
+            nav {
+                justify-content: space-between; /* Logo left, toggle right on mobile */
+                padding: 0 10px; /* Add some padding */
+            }
+
+            .nav-links {
+                display: none; /* Hide links by default on mobile */
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when active */
+                flex-direction: column; /* Stack links vertically */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="gaga.png" alt="GAGA Logo"/>
+            </a>
+            <div class="nav-links">
+                <a href="About.html">About Us</a>
+                <a href="Our Product.html">Our Products</a>
+                <a href="Partnership.html">Partnership</a>
+                <a href="Career.html">Career</a>
+            </div>
+            <button class="menu-toggle">☰</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Brand Activation Supervisor</h1>
+            <p>Jakarta Selatan, Jakarta Raya | Full Time</p>
+            <p>Manajemen Brand (Pemasaran & dan komunikasi)</p>
+        </div>
+    </section>
+
+
+    <main class="container">
+        <section class="job-details">
+            <h2>Deskripsi Pekerjaan</h2>
+            <ol>
+                <li>Bertanggung jawab untuk membuat laporan kerja sales.</li>
+                <li>Membuat perencanaan kerja Tim Sales.</li>
+                <li>Mengelola dan mengatur Tim Sales dalam proses pencapaian target.</li>
+                <li>Memastikan target penjualan tercapai.</li>
+            </ol>
+        </section>
+
+        <section class="qualification">
+            <h2>Kualifikasi</h2>
+            <ol>
+                <li>Pendidikan minimal D3 Semua Jurusan.</li>
+                <li>Memiliki pengalaman minimal 2 tahun sebagai Sales Supervisor di bidang FMCG.</li>
+                <li>Mampu mengoperasikan komputer dengan baik.</li>
+                <li>Mampu bekerja secara individu maupun team.</li>
+                <li>Memiliki jiwa kepemimpinan, kemampuan analisa pemecahan masalah, dan interaksi yang baik.</li>
+                <li>Memiliki semangat dan motivasi yang tinggi.</li>
+                <li>Bisa mengendarai mobil dan sepeda motor serta memiliki SIM A dan C.</li>
+                <li>Bersedia untuk penempatan di Seluruh Indonesia.</li>
+            </ol>
+        </section>
+
+        <section class="announcement">
+            <h2>Pengumuman</h2>
+            <ol>
+                <li>PT Jakarana Tama tidak pernah memungut biaya apapun dalam proses rekrutmen.</li>
+                <li>PT Jakarana Tama tidak pernah bekerja sama dengan travel agent atau biro perjalanan tertentu dalam proses rekrutmen.</li>
+                <li>Apabila Anda diminta untuk membayar sejumlah uang dalam bentuk pembayaran tiket pesawat dan hotel atau akomodasi lainnya agar diabaikan.</li>
+                <li>Jangan memberikan data pribadi atau data keuangan Anda kepada siapapun.</li>
+                <li>Jika membutuhkan klarifikasi lebih lanjut dapat langsung menghubungi PT Jakarana Tama.</li>
+            </ol>
+        </section>
+
+        <section class="company-info">
+            <h2>Profil Perusahaan</h2>
+            <p>PT Jakarana Tama berdiri pada tanggal 20 Juni 1980 berdasarkan Akta Notaris Kusmulayanto Ongko, SH No. 107 sebagai perusahaan distribusi regional di Medan, Sumatera Utara.</p>
+            <p>Bisnis utama perusahaan adalah memproduksi mi instan, produk kalengan, sosis siap saji, dan bumbu penyedap. Menyadari pentingnya diversifikasi bisnis dan produk, perusahaan telah menginvestasikan merek 'GaGa' dalam portofolio kami. Perusahaan juga memiliki beberapa merek lain, seperti, 100, 1000, Mie Gepeng, Mie Telor A1, Otak-otak, Sosis Loncat.</p>
+            <p>Merek-merek ini melayani beberapa segmen pasar dan konsumen yang berbeda. Sejalan dengan meningkatnya jumlah variasi produk, perusahaan telah memperluas distribusinya yang tersebar di semua kota besar di Indonesia.</p>
+            <p>Perusahaan ini memiliki salah satu merek mie instan paling populer di Indonesia, GaGa, yang terus-menerus mendapatkan pangsa pasar dalam lingkungan yang sangat kompetitif.</p>
+            <p>CV dapat dikirimkan melalui email ke <a href="mailto:recruitment@jakaranatama.co.id">recruitment@jakaranatama.co.id</a>.</p>
+        </section>
+
+        <a href="mailto:recruitment@jakaranatama.co.id" class="apply-now">Apply Now</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GAGA. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+    </script>
+</body>
+</html>

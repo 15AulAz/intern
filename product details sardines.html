@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAGA - Taste of Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0c4c91;
+            --primary-red: #a30015;
+            --accent-yellow: #ffd700;
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+            --bg-image: url('your-image-url.jpg'); /* Replace with your background image URL */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background: var(--bg-image);
+            background-size: cover;
+            background-position: center;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%; /* Memastikan tabel mengisi lebar kontainer */
+            border-collapse: collapse; /* Menghilangkan jarak antara border sel */
+            margin: 20px 0; /* Menambah jarak di atas dan bawah tabel */
+        }
+
+        th, td {
+            border: 1px solid #ccc; /* Menambah border pada sel tabel */
+            padding: 10px; /* Memberikan padding dalam sel */
+            text-align: left; /* Mengatur teks menjadi rata kiri */
+        }
+
+        th {
+            background-color: var(--primary-blue); /* Memberikan warna latar pada header tabel */
+            color: white; /* Mengatur warna teks pada header tabel */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Memberikan warna latar pada baris genap */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: -100px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            opacity: 0;
+            transition: top 0.5s ease, opacity 0.5s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            flex-grow: 1; /* Allow this to take available space */
+            display: flex;
+            justify-content: center; /* Center the navigation links */
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px; /* Adjusted margin for spacing */
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-blue));
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .hero-img:hover {
+            transform: scale(1.05);
+        }
+
+        .commitment {
+            background-color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .commitment h2 {
+            color: var(--primary-blue);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .commitment p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .product-logo {
+            width: 100px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+        }
+
+        .product-logo:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-container {
+            display: flex;            /* Menggunakan Flexbox */
+            justify-content: center;  /* Menengahkan isi secara horizontal */
+            flex-direction: column;   /* Mengatur orientasi vertikal */
+            align-items: center;      /* Menengahkan isi secara vertikal */
+        }
+
+        .gallery-item {
+            text-align: center;       /* Menengahkan teks di dalam item galeri */
+        }
+
+        .gallery-item img {
+            max-width: 100%;          /* Membuat gambar responsif */
+            height: auto;             /* Menjaga rasio aspek gambar */
+            border-radius: 15px;      /* Menambahkan sudut melengkung pada gambar */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Menambahkan bayangan */
+        }
+
+
+        .find-us {
+            background-color: var(--bg-light);
+            padding: 5rem 0;
+        }
+
+        .find-us h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .find-us-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .find-us-section {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .find-us-section h3 {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .icon-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .icon-links img {
+            width: 50px;
+            transition: transform 0.3s;
+        }
+
+        .icon-links img:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .centered-title {
+            color: var(--primary-red);
+            text-align: center;  
+            margin: 0;           
+            padding: 20px 0;     
+        }
+
+        
+        .contact {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .contact h2 {
+            text-align: center;
+            color: var(--primary-blue);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0; /* Ensure it stays in the container */
+            text-align: left; /* Align text to the left */
+            padding: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 100%;
+        }
+
+        .map {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .map iframe {
+            width: 100%; /* Make the iframe responsive */
+            height: 300px; /* Set a fixed height for better visibility */
+            border: none; /* Remove default border */
+            border-radius: 10px; /* Add border radius for styling */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 10px 20px; /* Reduce the padding to make it smaller */
+            font-size: 14px; /* Decrease the font size for smaller text */
+            text-align: center; /* Center the text */
+            height: auto; /* Adjust height if necessary */
+        }
+
+        /* Show header on scroll */
+        body.scrolled header {
+            top: 0; /* Header will appear at the top */
+            opacity: 1; /* Header becomes visible */
+        }
+
+        /* Existing styles remain unchanged */
+
+/* Responsive Design Updates */
+@media screen and (min-width: 768px) {
+    /* Desktop Styles */
+    .container {
+        padding: 0 40px;
+    }
+
+    header {
+        padding: 1rem 0;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin: 0 15px;
+    }
+
+    .logo {
+        margin: 0 30px;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .hero p {
+        font-size: 1.4rem;
+    }
+
+    .commitment h2 {
+        font-size: 3rem;
+    }
+
+    .commitment p {
+        font-size: 1.3rem;
+    }
+
+    .products {
+        justify-content: space-between;
+    }
+
+    .product-logo {
+        width: 120px;
+    }
+
+    .contact-container {
+        flex-direction: row;
+    }
+
+    .contact-info, .map {
+        flex: 1;
+    }
+
+    .map iframe {
+        height: 400px;
+    }
+
+    table {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /* Mobile Styles */
+    .container {
+        padding: 0 20px;
+    }
+
+    header {
+        padding: 0.5rem 0;
+    }
+
+    .nav-links {
+                position: fixed;
+                top: 50px;
+                left: -100%;
+                width: 94%;
+                height: auto;
+                max-height: 80vh; /* Set a maximum height */
+                background-color: var(--primary-blue);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                margin: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .commitment h2 {
+        font-size: 2rem;
+    }
+
+    .commitment p {
+        font-size: 1rem;
+    }
+
+    .products {
+        justify-content: center;
+    }
+
+    .product-logo {
+        width: 80px;
+    }
+
+    .contact {
+        padding: 0.5rem 0; /* Atur padding atas dan bawah lebih kecil */
+        font-size: 0.8rem; /* Ukuran font lebih kecil pada mobile */
+    }
+
+    .contact-info {
+        padding: 1rem; /* Kurangi padding dalam container informasi kontak */
+        margin: 0 auto; /* Agar tetap center di mobile */
+        font-size: 0.8rem; /* Ukuran font lebih kecil */
+    }
+    
+    .map iframe {
+        height: 250px; /* Lebih kecil pada mobile */
+    }
+
+    .map iframe {
+        height: 250px;
+    }
+
+    table {
+        font-size: 0.7rem;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+}
+
+/* Add a menu toggle button for mobile */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .menu-toggle {
+        display: block;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="gaga.png" alt="GAGA Logo" style="height: 50px;"/>
+            </a>
+            <button class="menu-toggle">☰</button>
+            <div class="nav-links">
+                <a href="About.html">About Us</a>
+                <a href="Our Product.html">Our Products</a>
+                <a href="Partnership.html">Partnership</a>
+                <a href="Career.html">Career</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <!-- Main content -->
+    <div class="container">
+        <h1 class="centered-title">GAGA SARDINES</h1>
+
+        <section>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="Product-GAGA-Sarden-2.jpg" alt="GAGA Sardines">
+                </div>
+        </section>
+
+        <h3>GAGA SARDINES</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Net Weight / Package</th>
+                    <th>Shelf Life</th>
+                    <th>Carton Measurement</th>
+                    <th>Loading 20' Container</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sardines Tomato and Chilli Sauce</td>
+                    <td>155gr / 60 pcs</td>
+                    <td>36 Months</td>
+                    <td>330x270x180 mm</td>
+                    <td>1.500</td>
+                </tr>
+                <tr>
+                    <td>Sardines Tomato and Chilli Sauce</td>
+                    <td>425gr / 24 pcs</td>
+                    <td>36 Months</td>
+                    <td>310x230x130 mm</td>
+                    <td>1.550</td>
+                </tr>
+                <tr>
+                    <td>Sardines Chilli Balado</td>
+                    <td>155gr / 60 pcs</td>
+                    <td>36 Months</td>
+                    <td>330x270x180 mm</td>
+                    <td>1.500</td>
+                </tr>
+                <tr>
+                    <td>Sardines Chilli Balado</td>
+                    <td>425gr / 24 pcs</td>
+                    <td>36 Months</td>
+                    <td>310x230x130 mm</td>
+                    <td>1.550</td>
+                </tr>
+        </table>
+
+        <section class="contact">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>PT Jakarana Tama</h3>
+                        <p><strong>Head Office:</strong><br>
+                        Jl. Bintaro Raya No.15, RT.11/RW.10<br>
+                        Kebayoran Lama Selatan<br>
+                        Jakarta Selatan, Indonesia, 12240</p>
+                        <p><strong>Operating Hours:</strong> 08.00 - 16.00</p>
+                        <p><strong>Phone:</strong> (021) 7292728</p>
+                        <p><strong>Email:</strong> info@jakaranatama.co.id</p>
+                    </div>
+        
+                    <!-- Google Maps Embed -->
+                    <section id="map" class="map" style="margin-top: 0;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31512.989031594123!2d106.79420473387082!3d-6.240122489794188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5cfbcf40a65%3A0x20347669b4318d81!2sJl.%20Bintaro%20Raya%20No.15%2C%20RT.11%2FRW.10%2C%20Kebayoran%20Lama%20Selatan%2C%20Jakarta%20Selatan%2C%20DKI%20Jakarta%2012240!5e0!3m2!1sen!2sid!4v1690636225010!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </section>
+                </div>
+            </div>
+        </section>
+        
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GAGA. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
+ 
